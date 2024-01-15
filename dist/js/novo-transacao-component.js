@@ -15,14 +15,13 @@ elementoFormulario.addEventListener("submit", function (event) {
         saldo += valor;
     }
     else if (tipotransacao == TipoTransacao.TRANSFERENCIA || tipotransacao == TipoTransacao.PAGAMENTO_BOLETO) {
-        valor -= saldo;
+        saldo -= valor;
     }
     else {
-        alert("Tipo de Transação é invalido");
-        return;
+        return alert("Tipo de Transação é invalido");
     }
     ;
-    elementoSaldo.textContent = saldo.toString();
+    elementoSaldo.textContent = formatarValor(saldo);
     const novaTrasacao = {
         tipoTransacao: tipotransacao,
         valor: valor,
